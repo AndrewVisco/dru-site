@@ -373,7 +373,17 @@ footer .bottom{border-top:1px solid #333;padding-top:var(--s2);font-size:.8125re
       if(!re.test(v)){ fail('That email doesn’t look right. Check it and try again.'); return; }
       input.removeAttribute('aria-invalid'); msg.textContent = '';
       btn.disabled = true; btn.textContent = 'JOINING';
-      https://formspree.io/f/xljdqvzj
+      fetch('https://formspree.io/f/xljdqvzj', {
+     method: 'POST',
+     headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+     body: JSON.stringify({email: v, source: 'dru-website'})
+   }).then(function(r){
+     if(!r.ok) throw new Error();
+     box.classList.add('joined');
+   }).catch(function(){
+     btn.disabled = false; btn.textContent = 'GET EARLY ACCESS';
+     fail('Something went wrong. Please try again.');
+   });
     });
     input.addEventListener('input', function(){ input.removeAttribute('aria-invalid'); msg.textContent=''; msg.classList.remove('err'); });
     function fail(t){ msg.textContent = t; msg.classList.add('err'); input.setAttribute('aria-invalid','true'); input.focus(); }
