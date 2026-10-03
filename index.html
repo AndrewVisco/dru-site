@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DRU | Protein Without Limits</title>
+<meta name="description" content="DRU makes plant-based, high-protein bars designed with more people in mind. Join the list for early access to our first drop.">
+<!-- OPEN GRAPH PLACEHOLDERS: replace URLs once the domain is live -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="DRU | Protein Without Limits">
+<meta property="og:description" content="Plant-based, high-protein bars designed with more people in mind. Join the list for early access.">
+<meta property="og:image" content="https://druprotein.com/assets/dru-birthday-cake.png">
+<meta property="og:url" content="https://druprotein.com">
+<meta name="twitter:card" content="summary_large_image">
+<!-- FAVICON PLACEHOLDER: swap for a dedicated icon file -->
+<link rel="icon" href="assets/dru-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<!-- SHOPIFY ANALYTICS: Shopify's Web Pixels / GA4 / Meta Pixel snippets go here later -->
+<style>
+:root{
+  --paper:#F5F3EF; --white:#fff; --ink:#000; --gray-1:#E4E1DB; --gray-2:#6B6963;
+  --accent:#3F55C8; /* sampled from the Birthday Cake label; use sparingly */
+  --font:'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:3rem; --s5:6rem; --s6:9rem;
+  --radius:2px; --max:1240px; --nav-h:80px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);line-height:1.5;font-size:1.0625rem;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+h1,h2,h3{font-weight:800;line-height:.95;letter-spacing:-.02em;text-transform:uppercase;font-stretch:100%}
+h2{font-size:clamp(2.25rem,6vw,4.75rem)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:.75rem 1rem;z-index:200}
+.skip:focus{left:0}
+
+/* Buttons */
+.btn{display:inline-block;font:700 .875rem/1 var(--font);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;background:var(--ink);color:#fff;border:2px solid var(--ink);padding:1.1rem 1.75rem;border-radius:var(--radius);cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.btn:hover{background:var(--accent);border-color:var(--accent)}
+.btn:active{transform:translateY(1px)}
+.btn[disabled]{opacity:.6;cursor:wait}
+.btn.sm{padding:.8rem 1.1rem;font-size:.75rem}
+.dark .btn{background:#fff;color:var(--ink);border-color:#fff}
+.dark .btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* Nav */
+header{position:sticky;top:0;z-index:100;background:rgba(245,243,239,.94);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .25s}
+header.scrolled{border-color:var(--gray-1)}
+.nav{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
+.logo img{height:68px;width:auto;mix-blend-mode:multiply}
+.nav ul{list-style:none;display:flex;gap:2rem}
+.nav ul a{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-decoration:none;padding:.5rem 0;border-bottom:2px solid transparent;transition:border-color .2s}
+.nav ul a:hover{border-color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.bag{background:none;border:0;font:600 .6875rem var(--font);letter-spacing:.08em;color:var(--gray-2);cursor:not-allowed;display:flex;align-items:center;gap:.4rem}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;position:relative}
+.burger span{position:absolute;left:11px;right:11px;height:2px;background:var(--ink);transition:transform .25s,opacity .2s}
+.burger span:nth-child(1){top:16px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:26px}
+.burger[aria-expanded=true] span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.burger[aria-expanded=true] span:nth-child(2){opacity:0}
+.burger[aria-expanded=true] span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h));max-height:860px}
+.hero-copy{padding:var(--s4) clamp(1.25rem,4vw,3rem) var(--s4) max(clamp(1.25rem,4vw,3rem),calc((100vw - var(--max))/2 + clamp(1.25rem,4vw,3rem)))}
+.hero h1{font-size:clamp(3rem,7.2vw,6.5rem);margin-bottom:var(--s3)}
+.hero .tag{font-size:1.5rem;font-weight:500;letter-spacing:-.01em;margin-bottom:var(--s2)}
+.hero .desc{max-width:30rem;color:var(--gray-2);margin-bottom:var(--s3)}
+.status{display:flex;align-items:center;gap:.6rem;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--s2)}
+.status::before{content:"";width:28px;height:2px;background:var(--accent)}
+.fine{font-size:.875rem;color:var(--gray-2);margin-top:.9rem}
+.hero-img{align-self:stretch;overflow:hidden;background:#F3F1EC}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:60% 50%;transition:transform 1.2s ease}
+.hero-img:hover img{transform:scale(1.025)}
+
+/* Positioning */
+.position{padding:var(--s5) 0;border-bottom:1px solid var(--gray-1)}
+.position .row{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);align-items:end}
+.position p.lead{font-size:1.375rem;max-width:26rem;letter-spacing:-.01em}
+.attrs{list-style:none;margin-top:var(--s4);display:grid;grid-template-columns:repeat(6,1fr);border-top:2px solid var(--ink)}
+.attrs li{padding:1rem .5rem 0 0;font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.attrs li+li{padding-left:1rem;border-left:1px solid var(--gray-1)}
+
+/* Signup */
+.dark{background:var(--ink);color:#fff}
+.signup{padding:var(--s5) 0}
+.signup .inner{max-width:760px}
+.signup h2{margin-bottom:var(--s3)}
+.signup p.sub{font-size:1.25rem;color:#cfcdc7;margin-bottom:var(--s4);max-width:34rem}
+form.join{display:flex;gap:.75rem;max-width:640px}
+form.join input{flex:1;min-width:0;font:500 1rem var(--font);padding:1.05rem 1.1rem;border:2px solid #fff;border-radius:var(--radius);background:transparent;color:#fff}
+form.join input::placeholder{color:#9b988f}
+form.join input[aria-invalid=true]{border-color:#ff7a6b}
+.msg{min-height:1.6em;margin-top:.9rem;font-size:.95rem}
+.msg.err{color:#ff9a8d}
+.success{display:none;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;line-height:1.15;max-width:640px;border-left:4px solid var(--accent);padding-left:1.25rem}
+.joined form.join,.joined .msg{display:none}.joined .success{display:block}
+.perks{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem 2rem;margin-top:var(--s3);font-size:.875rem;color:#cfcdc7}
+
+/* Why */
+.why{padding:var(--s5) 0}
+.why h2{margin-bottom:var(--s4)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
+.cols div{border-top:2px solid var(--ink);padding-top:var(--s2)}
+.cols h3{font-size:1.5rem;margin-bottom:.75rem;line-height:1.05}
+.cols p{color:var(--gray-2);max-width:22rem}
+
+/* Story */
+.story{background:var(--white);padding:var(--s5) 0}
+.story .grid{display:grid;grid-template-columns:4fr 7fr;gap:var(--s4)}
+.story blockquote{font-size:clamp(1.125rem,1.6vw,1.3rem);max-width:40rem}
+.story blockquote p+p{margin-top:1.1rem}
+.story .close{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-top:var(--s3)}
+.sig{margin-top:var(--s3);font-size:.95rem}.sig b{display:block;font-size:1.0625rem}
+
+/* Reviews */
+.reviews{padding:var(--s5) 0;border-bottom:1px solid var(--gray-1)}
+.reviews h2{margin-bottom:var(--s3)}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3)}
+.slot{border:1px dashed #B7B4AC;min-height:150px;padding:1.25rem;display:flex;align-items:flex-end;color:var(--gray-2);font-size:.9rem}
+.note{margin-top:var(--s3);color:var(--gray-2)}
+
+/* Final CTA */
+.final{padding:var(--s5) 0}
+.final h2{font-size:clamp(2.5rem,8vw,7rem)}
+
+/* Contact + footer */
+.contact{padding:var(--s4) 0 var(--s5);border-top:1px solid #333}
+.contact .row{display:flex;justify-content:space-between;gap:var(--s3);flex-wrap:wrap;align-items:flex-end}
+.contact h3{font-size:1.25rem;margin-bottom:.5rem}
+.contact a{text-underline-offset:4px}
+footer{background:var(--ink);color:#fff;padding:var(--s4) 0 var(--s3);border-top:1px solid #333}
+footer .top{display:grid;grid-template-columns:1.2fr 2fr;gap:var(--s4);padding-bottom:var(--s4)}
+.flogo{filter:invert(1);height:40px;width:auto;margin-bottom:.75rem}
+footer .links{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3)}
+footer ul{list-style:none;display:grid;gap:.6rem;font-size:.9rem}
+footer a{text-decoration:none;color:#cfcdc7}footer a:hover{color:#fff;text-decoration:underline}
+footer .bottom{border-top:1px solid #333;padding-top:var(--s2);font-size:.8125rem;color:#9b988f}
+
+@media (max-width:960px){
+  .nav ul{display:none}
+  .burger{display:block}
+  .bag{display:none}
+  .nav ul.open{display:flex;flex-direction:column;gap:0;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--paper);padding:.5rem clamp(1.25rem,4vw,3rem) 1.5rem;border-bottom:1px solid var(--gray-1)}
+  .nav ul.open a{display:block;padding:1rem 0;font-size:.875rem;border-bottom:1px solid var(--gray-1)}
+  .hero{grid-template-columns:1fr;min-height:0;max-height:none}
+  .hero-copy{padding:var(--s4) clamp(1.25rem,4vw,3rem) var(--s3)}
+  .hero-img{aspect-ratio:4/3.4}
+  .position .row,.story .grid,footer .top{grid-template-columns:1fr}
+  .attrs{grid-template-columns:repeat(3,1fr);row-gap:1.25rem}
+  .attrs li:nth-child(4){padding-left:0;border-left:0}
+  .cols,.slots{grid-template-columns:1fr;gap:var(--s3)}
+  :root{--s5:4.5rem}
+}
+@media (max-width:560px){
+  .nav-right .btn{padding:.7rem .85rem;font-size:.6875rem}
+  .logo img{height:56px}
+  .hero .btn,form.join .btn{width:100%;text-align:center}
+  form.join{flex-direction:column}
+  .hero-img{aspect-ratio:1/1}
+  .attrs{grid-template-columns:repeat(2,1fr)}
+  .attrs li:nth-child(n){padding-left:0;border-left:0}
+  .attrs li:nth-child(even){padding-left:1rem;border-left:1px solid var(--gray-1)}
+  footer .links{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="DRU home"><img src="assets/dru-logo.png" alt="DRU" width="79" height="68"></a>
+    <nav aria-label="Primary">
+      <ul id="menu">
+        <li><a href="#top">HOME</a></li>
+        <li><a href="#join">JOIN THE DROP</a></li>
+        <li><a href="#why">WHY DRU</a></li>
+        <li><a href="#story">OUR STORY</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <!-- SHOPIFY CART: replace with the cart drawer / cart link when the shop goes live -->
+      <button class="bag" type="button" disabled aria-label="Shopping bag, coming soon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8a3 3 0 016 0"/></svg>SOON
+      </button>
+      <a class="btn sm" href="#join">GET EARLY ACCESS</a>
+      <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="hero-copy">
+    <p class="status">First drop coming soon</p>
+    <h1>Protein without limits.</h1>
+    <p class="tag">Made for everyone.</p>
+    <p class="desc">Plant-based, high-protein bars made without dairy, nuts, eggs, sesame, or fish.</p>
+    <a class="btn" href="#join">GET EARLY ACCESS</a>
+    <p class="fine">Join now and get 10% off your first order.</p>
+  </div>
+  <div class="hero-img">
+    <!-- Launch visual only. Not a purchasable product. -->
+    <img src="assets/dru-birthday-cake.png" alt="Opened DRU Birthday Cake protein bar with a bite taken out, surrounded by sprinkles" width="1448" height="1086" fetchpriority="high">
+  </div>
+</section>
+
+<!-- 2. POSITIONING -->
+<section class="position" aria-labelledby="pos-h">
+  <div class="wrap">
+    <div class="row">
+      <h2 id="pos-h">Made for more people.</h2>
+      <p class="lead">Protein bars shouldn’t require you to compromise.</p>
+    </div>
+    <ul class="attrs">
+      <li>Plant-based</li><li>High protein</li><li>Dairy-free</li><li>Nut-free</li><li>Egg-free</li><li>Sesame-free</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 3. FIRST DROP SIGNUP -->
+<section class="signup dark" id="join" aria-labelledby="join-h">
+  <div class="wrap"><div class="inner" data-signup>
+    <h2 id="join-h">The first DRU drop is coming.</h2>
+    <p class="sub">We’re getting ready to launch. Join the list for early access and 10% off your first order.</p>
+    <!-- SHOPIFY EMAIL INTEGRATION GOES HERE
+         Replace this form (and the temporary JS at the bottom of the file) with a Shopify Forms / Shopify Email
+         embed, or a form that posts to /contact#contact_form with <input type="hidden" name="contact[tags]" value="newsletter">.
+         Keep the same input name/labels so styling carries over. -->
+    <form class="join" novalidate>
+      <label class="sr" for="email-1" style="position:absolute;left:-999px">Email address</label>
+      <input id="email-1" type="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+      <button class="btn" type="submit">GET EARLY ACCESS</button>
+    </form>
+    <p class="msg" role="status" aria-live="polite"></p>
+    <p class="success" role="status">You’re in. We’ll let you know before the first DRU drop.</p>
+    <ul class="perks"><li>First to hear about the drop</li><li>Launch updates</li><li>10% off your first order</li></ul>
+  </div></div>
+</section>
+
+<!-- FUTURE SHOP: when the first drop launches, add a #shop section here.
+     SHOPIFY PRODUCT COLLECTION: render a collection grid with {% for product in collection.products %}
+     SHOPIFY PRODUCT TEMPLATES: Birthday Cake etc. become templates/product.json
+     SHOPIFY CHECKOUT: use Shopify-hosted checkout only (Shop Pay, Apple Pay, Google Pay, PayPal, cards).
+     Never collect card details in custom HTML. -->
+<!-- Until then, any shop link should go to #join, or show "FIRST DROP COMING SOON — Join the list to be the first to know." -->
+
+<!-- 4. WHY DRU -->
+<section class="why" id="why" aria-labelledby="why-h">
+  <div class="wrap">
+    <h2 id="why-h">Why DRU?</h2>
+    <div class="cols">
+      <div><h3>High protein</h3><p>Protein that supports an active lifestyle.</p></div>
+      <div><h3>Plant-based</h3><p>Built around plant-based protein.</p></div>
+      <div><h3>Made for more people</h3><p>Made without dairy, nuts, eggs, sesame, and fish.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FOUNDER STORY -->
+<section class="story" id="story" aria-labelledby="story-h">
+  <div class="wrap grid">
+    <h2 id="story-h">Our story</h2>
+    <blockquote>
+      <p>I grew up dealing with food allergies, always noticing products other people could enjoy that I couldn’t.</p>
+      <p>When I got into fitness and nutrition, the protein category was the most frustrating. Many high-protein bars contain dairy or nuts, and many allergy-friendly options didn’t have the protein I was looking for.</p>
+      <p>So I started DRU to make the bar I always wanted: high-protein, plant-based, and designed with more people in mind.</p>
+      <p>People shouldn’t feel excluded from everyday foods because of dietary restrictions.</p>
+      <p class="close">That’s why DRU is made for everyone.</p>
+      <p class="sig"><b>Andrew Visco</b>Founder, DRU</p>
+    </blockquote>
+  </div>
+</section>
+
+<!-- 6. REVIEWS PLACEHOLDER -->
+<section class="reviews" aria-labelledby="rev-h">
+  <div class="wrap">
+    <h2 id="rev-h">What people are saying</h2>
+    <!-- FUTURE CUSTOMER REVIEWS GO HERE
+         SHOPIFY CUSTOMER REVIEWS: embed a reviews app (Judge.me, Okendo, Shopify Product Reviews).
+         Or replace the .slot elements below with <blockquote> entries from real customers only. -->
+    <div class="slots"><div class="slot">Reviews coming after our first drop.</div><div class="slot"></div><div class="slot"></div></div>
+  </div>
+</section>
+
+<!-- 7. FINAL CTA -->
+<section class="final dark" aria-labelledby="final-h">
+  <div class="wrap"><div class="signup inner" style="padding:0" data-signup>
+    <h2 id="final-h" style="margin-bottom:var(--s3)">Be first to try DRU.</h2>
+    <p class="sub">Get early access to our first drop and 10% off your first order.</p>
+    <!-- SHOPIFY EMAIL INTEGRATION GOES HERE (same replacement as the form above) -->
+    <form class="join" novalidate>
+      <label for="email-2" style="position:absolute;left:-999px">Email address</label>
+      <input id="email-2" type="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+      <button class="btn" type="submit">GET EARLY ACCESS</button>
+    </form>
+    <p class="msg" role="status" aria-live="polite"></p>
+    <p class="success" role="status">You’re in. We’ll let you know before the first DRU drop.</p>
+  </div></div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact dark" id="contact" aria-labelledby="contact-h">
+  <div class="wrap row">
+    <div>
+      <h3 id="contact-h">Contact</h3>
+      <!-- PLACEHOLDER EMAIL: replace once the official domain and email are purchased.
+           The signup form does NOT send to this address. -->
+      <a href="mailto:hello@druprotein.com">hello@druprotein.com</a>
+    </div>
+    <div>
+      <!-- PLACEHOLDER SOCIAL URLS: replace "#" with real profile links -->
+      <a href="#" aria-label="DRU on Instagram">Instagram</a> &nbsp;&nbsp; <a href="#" aria-label="DRU on TikTok">TikTok</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div><img class="flogo" src="assets/dru-logo.png" alt="DRU"><p>Made for everyone.</p></div>
+      <div class="links">
+        <ul aria-label="Site"><li><a href="#top">Home</a></li><li><a href="#join">Join the Drop</a></li><li><a href="#why">Why DRU</a></li><li><a href="#story">Our Story</a></li><li><a href="#contact">Contact</a></li></ul>
+        <!-- PLACEHOLDER LEGAL LINKS: point to Shopify policy pages (/policies/privacy-policy etc.) later -->
+        <ul aria-label="Legal"><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms</a></li><li><a href="#">Accessibility</a></li></ul>
+        <ul aria-label="Social"><li><a href="#">Instagram</a></li><li><a href="#">TikTok</a></li></ul>
+      </div>
+    </div>
+    <p class="bottom">© <span id="year">2026</span> DRU. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Header border on scroll
+  var header = document.querySelector('header');
+  addEventListener('scroll', function(){ header.classList.toggle('scrolled', scrollY > 8); }, {passive:true});
+
+  // Mobile menu
+  var burger = document.querySelector('.burger'), menu = document.getElementById('menu');
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  burger.addEventListener('click', function(){ setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function(e){ if(e.target.tagName === 'A') setMenu(false); });
+  addEventListener('keydown', function(e){ if(e.key === 'Escape') setMenu(false); });
+
+  // TEMPORARY EMAIL SIGNUP LOGIC
+  // SHOPIFY EMAIL INTEGRATION GOES HERE: replace this handler with a real submit to Shopify
+  // (Shopify Forms embed, or POST to /contact with contact[tags]=newsletter). Do not store emails in front-end code.
+  var re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  document.querySelectorAll('[data-signup]').forEach(function(box){
+    var form = box.querySelector('form'), input = form.querySelector('input'),
+        msg = box.querySelector('.msg'), btn = form.querySelector('button');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var v = input.value.trim();
+      if(!v){ fail('Enter your email to join the list.'); return; }
+      if(!re.test(v)){ fail('That email doesn’t look right. Check it and try again.'); return; }
+      input.removeAttribute('aria-invalid'); msg.textContent = '';
+      btn.disabled = true; btn.textContent = 'JOINING';
+      setTimeout(function(){ box.classList.add('joined'); }, 400); // simulated request
+    });
+    input.addEventListener('input', function(){ input.removeAttribute('aria-invalid'); msg.textContent=''; msg.classList.remove('err'); });
+    function fail(t){ msg.textContent = t; msg.classList.add('err'); input.setAttribute('aria-invalid','true'); input.focus(); }
+  });
+})();
+</script>
+</body>
+</html>
