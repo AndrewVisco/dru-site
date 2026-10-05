@@ -505,7 +505,7 @@ body.modal-open{overflow:hidden}
      if(!r.ok) throw new Error();
      box.classList.add('joined');
    }).catch(function(){
-     btn.disabled = false; btn.textContent = 'GET EARLY ACCESS';
+     btn.disabled = false; btn.textContent = btn.dataset.label || 'GET EARLY ACCESS';
      fail('Something went wrong. Please try again.');
    });
     });
