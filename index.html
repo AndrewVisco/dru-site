@@ -109,6 +109,16 @@ form.join input[aria-invalid=true]{border-color:#ff7a6b}
 .cols h3{font-size:1.5rem;margin-bottom:.75rem;line-height:1.05}
 .cols p{color:var(--gray-2);max-width:22rem}
 
+/* Everyday people */
+.everyone{padding:var(--s5) 0;border-top:1px solid var(--gray-1)}
+.everyone .head{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);align-items:end;margin-bottom:var(--s4)}
+.everyone p.lead{font-size:1.375rem;max-width:26rem;letter-spacing:-.01em}
+.people{list-style:none;border-top:2px solid var(--ink)}
+.people li{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--gray-1);font-size:clamp(1.5rem,3.6vw,2.75rem);font-weight:800;letter-spacing:-.02em;text-transform:uppercase;line-height:1;transition:padding-left .25s,color .25s}
+.people li span{font-size:.8125rem;font-weight:500;letter-spacing:0;text-transform:none;color:var(--gray-2);text-align:right}
+.people li:hover{padding-left:.75rem;color:var(--accent)}
+.everyone .close{margin-top:var(--s3);font-size:1.125rem}
+
 /* Story */
 .story{background:var(--white);padding:var(--s5) 0}
 .story .grid{display:grid;grid-template-columns:4fr 7fr;gap:var(--s4)}
@@ -151,7 +161,7 @@ footer .bottom{border-top:1px solid #333;padding-top:var(--s2);font-size:.8125re
   .hero-copy{padding:var(--s4) clamp(1.25rem,4vw,3rem) var(--s3)}
   .hero h1{font-size:clamp(2.75rem,10vw,4.5rem)}
   .hero-img{aspect-ratio:4/3.4}
-  .position .row,.story .grid,footer .top{grid-template-columns:1fr}
+  .position .row,.story .grid,footer .top,.everyone .head{grid-template-columns:1fr}
   .attrs{grid-template-columns:repeat(3,1fr);row-gap:1.25rem}
   .attrs li:nth-child(4){padding-left:0;border-left:0}
   .cols,.slots{grid-template-columns:1fr;gap:var(--s3)}
@@ -167,6 +177,7 @@ footer .bottom{border-top:1px solid #333;padding-top:var(--s2);font-size:.8125re
   .attrs li:nth-child(n){padding-left:0;border-left:0}
   .attrs li:nth-child(even){padding-left:1rem;border-left:1px solid var(--gray-1)}
   footer .links{grid-template-columns:1fr 1fr}
+  .people li{flex-direction:column;gap:.35rem}.people li span{text-align:left}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -206,7 +217,7 @@ footer .bottom{border-top:1px solid #333;padding-top:var(--s2);font-size:.8125re
     <p class="tag">Made for everyone.</p>
     <p class="desc">Plant-based, high-protein bars made without dairy, nuts, eggs, sesame, or fish.</p>
     <a class="btn" href="#join">GET EARLY ACCESS</a>
-    <p class="fine">Join now and get 10% off your first order.</p>
+    <p class="fine">Join now and get a $13 credit for future orders.</p>
   </div>
   <div class="hero-img">
     <!-- Launch visual only. Not a purchasable product. -->
@@ -231,7 +242,7 @@ footer .bottom{border-top:1px solid #333;padding-top:var(--s2);font-size:.8125re
 <section class="signup dark" id="join" aria-labelledby="join-h">
   <div class="wrap"><div class="inner" data-signup>
     <h2 id="join-h">The first Dru drop is coming.</h2>
-    <p class="sub">We’re getting ready to launch. Join the list for early access and 10% off your first order.</p>
+    <p class="sub">We’re getting ready to launch. Join the list for early access and a $13 credit.</p>
     <!-- SHOPIFY EMAIL INTEGRATION GOES HERE
          Replace this form (and the temporary JS at the bottom of the file) with a Shopify Forms / Shopify Email
          embed, or a form that posts to /contact#contact_form with <input type="hidden" name="contact[tags]" value="newsletter">.
@@ -243,7 +254,7 @@ footer .bottom{border-top:1px solid #333;padding-top:var(--s2);font-size:.8125re
     </form>
     <p class="msg" role="status" aria-live="polite"></p>
     <p class="success" role="status">You’re in. We’ll let you know before the first Dru drop.</p>
-    <ul class="perks"><li>First to hear about the drop</li><li>Launch updates</li><li>10% off your first order</li></ul>
+    <ul class="perks"><li>First to hear about the drop</li><li>Launch updates</li><li>$13 credit for future orders</li></ul>
   </div></div>
 </section>
 
@@ -263,6 +274,26 @@ footer .bottom{border-top:1px solid #333;padding-top:var(--s2);font-size:.8125re
       <div><h3>Plant-based</h3><p>Built around plant-based protein.</p></div>
       <div><h3>Made for more people</h3><p>Made without dairy, nuts, eggs, sesame, and fish.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- 4B. NOT JUST FOR ATHLETES -->
+<section class="everyone" aria-labelledby="every-h">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="every-h">Not just for athletes.</h2>
+      <p class="lead">Protein is for anyone with a long day ahead. DRU is made for everyday people.</p>
+    </div>
+    <!-- EDIT THIS LIST: add, remove, or reword rows. Keep it to real groups you want to reach. -->
+    <ul class="people">
+      <li>Busy moms <span>Snacks between school runs</span></li>
+      <li>Delivery drivers <span>Fuel for the road</span></li>
+      <li>Students <span>Between classes</span></li>
+      <li>Nurses and teachers <span>On your feet all day</span></li>
+      <li>Gym regulars <span>Before or after training</span></li>
+      <li>Anyone left out <span>Of the protein bar aisle</span></li>
+    </ul>
+    <p class="close">Made for everyone means everyone.</p>
   </div>
 </section>
 
@@ -296,7 +327,7 @@ footer .bottom{border-top:1px solid #333;padding-top:var(--s2);font-size:.8125re
 <section class="final dark" aria-labelledby="final-h">
   <div class="wrap"><div class="signup inner" style="padding:0" data-signup>
     <h2 id="final-h" style="margin-bottom:var(--s3)">Be first to try Dru.</h2>
-    <p class="sub">Get early access to our first drop and 10% off your first order.</p>
+    <p class="sub">Get early access to our first drop and a $13 credit for future orders.</p>
     <!-- SHOPIFY EMAIL INTEGRATION GOES HERE (same replacement as the form above) -->
     <form class="join" novalidate>
       <label for="email-2" style="position:absolute;left:-999px">Email address</label>
