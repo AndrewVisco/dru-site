@@ -151,6 +151,31 @@ footer ul{list-style:none;display:grid;gap:.6rem;font-size:.9rem}
 footer a{text-decoration:none;color:#cfcdc7}footer a:hover{color:#fff;text-decoration:underline}
 footer .bottom{border-top:1px solid #333;padding-top:var(--s2);font-size:.8125rem;color:#9b988f}
 
+/* Floating CLAIM CREDIT button + modal */
+.credit-btn{position:fixed;right:max(1.25rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));z-index:150;font:700 .75rem/1 var(--font);letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:#fff;border:0;border-radius:12px;padding:1.05rem 1.4rem;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.18);transition:transform .2s,background .2s,box-shadow .2s,opacity .25s,visibility .25s}
+.credit-btn:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.22)}
+.credit-btn:active{transform:translateY(0)}
+.credit-btn.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.modal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:1.25rem;background:rgba(0,0,0,.55)}
+.modal[hidden]{display:none}
+.modal .panel{position:relative;width:100%;max-width:460px;background:var(--white);color:var(--ink);border-radius:12px;padding:2.5rem 2rem 2rem;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:pop .22s ease}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.modal .x{position:absolute;top:.5rem;right:.5rem;width:44px;height:44px;background:none;border:0;font-size:1.75rem;line-height:1;cursor:pointer;color:var(--gray-2);transition:color .2s}
+.modal .x:hover{color:var(--ink)}
+.modal h2{font-size:clamp(1.75rem,6vw,2.25rem);margin-bottom:.9rem;padding-right:1.5rem}
+.modal p.sub{color:var(--gray-2);margin-bottom:1.5rem}
+.modal form.join{flex-direction:column;max-width:none}
+.modal form.join input{border-color:var(--ink);color:var(--ink)}
+.modal form.join input::placeholder{color:#8a877f}
+.modal form.join input[aria-invalid=true]{border-color:#B3261E}
+.modal .msg.err{color:#B3261E}
+.modal .success{font-size:1.5rem}
+body.modal-open{overflow:hidden}
+@media (max-width:560px){
+  .credit-btn{right:max(.9rem,env(safe-area-inset-right));bottom:max(.9rem,env(safe-area-inset-bottom));padding:.9rem 1.1rem;font-size:.6875rem}
+  .modal .panel{padding:2.25rem 1.25rem 1.5rem}
+}
+
 @media (max-width:960px){
   .nav ul{display:none}
   .burger{display:block}
@@ -369,6 +394,74 @@ footer .bottom{border-top:1px solid #333;padding-top:var(--s2);font-size:.8125re
     <p class="bottom">© <span id="year">2026</span> Dru. All rights reserved.</p>
   </div>
 </footer>
+
+<!-- FLOATING CLAIM CREDIT BUTTON -->
+<button class="credit-btn" id="credit-open" type="button" aria-haspopup="dialog">CLAIM CREDIT</button>
+
+<!-- CLAIM CREDIT MODAL
+     Uses the same data-signup logic as the other forms, so it submits to the SAME waitlist.
+     When you swap in Shopify Email / Formspree, this form updates automatically. -->
+<div class="modal" id="credit-modal" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="credit-h" data-signup>
+    <button class="x" type="button" aria-label="Close" data-close>&times;</button>
+    <h2 id="credit-h">Get credit for being early.</h2>
+    <p class="sub">Join the DRU waitlist and be one of the first to know when we launch.</p>
+    <form class="join" novalidate>
+      <label for="email-3" style="position:absolute;left:-999px">Email address</label>
+      <input id="email-3" type="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+      <button class="btn" type="submit" data-label="JOIN THE WAITLIST">JOIN THE WAITLIST</button>
+    </form>
+    <p class="msg" role="status" aria-live="polite"></p>
+    <p class="success" role="status">You’re in. Welcome to DRU.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var openBtn = document.getElementById('credit-open'),
+      modal = document.getElementById('credit-modal'),
+      input = document.getElementById('email-3');
+
+  function open(){
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+    setTimeout(function(){ input.focus(); }, 50);
+  }
+  function close(){
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+    openBtn.focus();
+  }
+  openBtn.addEventListener('click', open);
+
+  // Close: X button, click outside the popup, or Escape
+  modal.addEventListener('click', function(e){
+    if(e.target === modal || e.target.hasAttribute('data-close')) close();
+  });
+  addEventListener('keydown', function(e){
+    if(modal.hidden) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'Tab'){ // keep keyboard focus inside the popup
+      var f = modal.querySelectorAll('button,input'), vis = [];
+      f.forEach(function(el){ if(el.offsetParent !== null) vis.push(el); });
+      if(!vis.length) return;
+      var first = vis[0], last = vis[vis.length-1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  });
+
+  // Hide the floating button while a signup section is on screen (avoids a duplicate CTA)
+  if('IntersectionObserver' in window){
+    var visible = 0;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ visible += en.isIntersecting ? 1 : -1; });
+      openBtn.classList.toggle('is-hidden', visible > 0);
+    }, {threshold:.25});
+    document.querySelectorAll('main [data-signup]').forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
 
 <script>
 (function(){
