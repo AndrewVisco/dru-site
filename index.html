@@ -255,6 +255,74 @@ section.shape-section {
 @media (max-width: 600px) {
   section.shape-section { padding: 64px 20px; }
 }
+/* Shared section header: title left, intro right */
+section.mfmp, section.nja { padding: 96px 5vw; }
+.sec-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+.sec-head h2 { margin: 0; }
+.sec-head p { margin: 0; font-size: 1.25rem; line-height: 1.5; max-width: 440px; }
+
+/* Made for more people */
+.mfmp-tags {
+  list-style: none;
+  margin: 0;
+  padding: 24px 0 0;
+  border-top: 2px solid currentColor;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.mfmp-tags li {
+  padding: 10px 18px;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.mfmp-note {
+  margin: 20px 0 0;
+  max-width: none;
+  text-align: left;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+/* Not just for athletes */
+.nja-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid currentColor;
+}
+.nja-list li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.nja-who {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  line-height: 1.15;
+}
+.nja-why { font-size: 1.05rem; line-height: 1.4; opacity: 0.7; }
+
+@media (max-width: 800px) {
+  section.mfmp, section.nja { padding: 64px 20px; }
+  .sec-head { grid-template-columns: 1fr; gap: 20px; margin-bottom: 32px; }
+  .nja-list li { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+}
 </style>
 </head>
 <body>
@@ -301,17 +369,20 @@ section.shape-section {
 </section>
 
 <!-- 2. POSITIONING -->
-<section class="position" aria-labelledby="pos-h">
-  <div class="wrap">
-    <div class="row">
-      <h2 id="pos-h">Made for more people.</h2>
-      <p class="lead">Protein bars shouldn’t require you to compromise.</p>
-    </div>
-    <ul class="attrs">
-      <li>Plant-based</li><li>High protein</li><li>Dairy-free</li><li>Nut-free</li><li>Egg-free</li><li>Sesame-free</li>
-    <ul class="badges"> ... Sesame-free </ul>
-<p class="allergen-note">Our first formula is designed without these ingredients. Allergen testing and facility details will be published before launch.</p>
+<section class="mfmp" id="made-for-more">
+  <div class="sec-head">
+    <h2>id="pos-h">Made for more people.</h2>
+    <p>Protein bars shouldn’t require you to compromise.</p>
   </div>
+  <ul class="mfmp-tags">
+    <li>Plant-based</li>
+    <li>High protein</li>
+    <li>Dairy-free</li>
+    <li>Nut-free</li>
+    <li>Egg-free</li>
+    <li>Sesame-free</li>
+  </ul>
+  <p class="mfmp-note">Our first formula is designed without these ingredients. Allergen testing and facility details will be published before launch.</p>
 </section>
 
 <!-- 3. FIRST DROP SIGNUP -->
@@ -355,23 +426,19 @@ section.shape-section {
 </section>
 
 <!-- 4B. NOT JUST FOR ATHLETES -->
-<section class="everyone" aria-labelledby="every-h">
-  <div class="wrap">
-    <div class="head">
-      <h2 id="every-h">Not just for athletes.</h2>
-      <p class="lead">Protein is for anyone with a long day ahead. DRU is made for everyday people.</p>
-    </div>
-    <!-- EDIT THIS LIST: add, remove, or reword rows. Keep it to real groups you want to reach. -->
-    <ul class="people">
-      <li>Busy moms <span>Meal replacements or Snacks after school pickup </span></li>
-      <li>Delivery drivers <span>Fuel for the road</span></li>
-      <li>Students <span>Between classes</span></li>
-      <li>Are you on GLP-1 <span>You need this protein</span></li>
-      <li>Gym regulars <span>Before or after training</span></li>
-      <li>People with food allergies <span>Designed without dairy, nuts, eggs, sesame, and fish</span></li>
-    </ul>
-    <p class="close">Made for everyone means everyone.</p>
+<section class="nja" id="who-its-for">
+  <div class="sec-head">
+    <h2>Not just for athletes.</h2>
+    <p>Protein is for anyone with a long day ahead. DRU is made for everyday people.</p>
   </div>
+  <ul class="nja-list">
+    <li><span class="nja-who">People with food allergies</span><span class="nja-why">Designed without dairy, nuts, eggs, sesame, and fish</span></li>
+    <li><span class="nja-who">Busy parents</span><span class="nja-why">Snacks after school pickup</span></li>
+    <li><span class="nja-who">Students</span><span class="nja-why">Between classes</span></li>
+    <li><span class="nja-who">Delivery drivers</span><span class="nja-why">Fuel for the road</span></li>
+    <li><span class="nja-who">GLP-1 users</span><span class="nja-why">Protein-focused snacking</span></li>
+    <li><span class="nja-who">Gym regulars</span><span class="nja-why">Before or after training</span></li>
+  </ul>
 </section>
 
 <!-- 5. FOUNDER STORY -->
